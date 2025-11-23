@@ -1,0 +1,56 @@
+/* Preview image */
+.mc-avatar-preview-img {
+    margin-top: 8px;
+    border-radius: 4px;
+    width: 128px;
+    height: 128px;
+    image-rendering: pixelated;
+}
+
+/* Grid de cabezas */
+.mc-avatar-preset-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 6px;
+}
+
+.mc-avatar-preset {
+    border: 2px solid transparent;
+    padding: 2px;
+    background: #f3f3f3;
+    border-radius: 6px;
+    cursor: pointer;
+    outline: none;
+}
+
+.mc-avatar-preset img {
+    display: block;
+    width: 48px;
+    height: 48px;
+    image-rendering: pixelated;
+}
+
+.mc-avatar-preset.is-selected {
+    border-color: #2271b1;
+    box-shadow: 0 0 0 1px #2271b1;
+}
+
+/* Cabezas más pequeñas en el registro */
+body.login .mc-avatar-preset img {
+    width: 30px !important;
+    height: 30px !important;
+    image-rendering: pixelated;
+}
+
+/* Un poco de espacio en ajustes */
+.mc-avatars-wrap .mc-avatars-subtitle {
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.mc-avatars-wrap .mc-avatars-footer {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #555;
+}
