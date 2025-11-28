@@ -62,13 +62,13 @@ class MC_Avatars_Avatar {
 		$mc_username = get_user_meta( $user->ID, 'mc_username', true );
 		$preset_key  = get_user_meta( $user->ID, 'mc_avatar_preset', true );
 		?>
-		<h3><?php esc_html_e( 'Minecraft Avatar', 'mc-avatars' ); ?></h3>
+		<h3><?php esc_html_e( 'Minecraft Avatar', 'avatars-for-mc-by-mrdino' ); ?></h3>
 
 		<?php wp_nonce_field( 'mc_avatars_profile_update', 'mc_avatars_profile_nonce' ); ?>
 
 		<table class="form-table" role="presentation">
 			<tr>
-				<th><label for="mc_username"><?php esc_html_e( 'Minecraft Username', 'mc-avatars' ); ?></label></th>
+				<th><label for="mc_username"><?php esc_html_e( 'Minecraft Username', 'avatars-for-mc-by-mrdino' ); ?></label></th>
 				<td>
 					<input type="text"
 						   name="mc_username"
@@ -76,13 +76,13 @@ class MC_Avatars_Avatar {
 						   value="<?php echo esc_attr( $mc_username ); ?>"
 						   class="regular-text" />
 					<p class="description">
-						<?php esc_html_e( 'Enter your Minecraft username to use your Minecraft head as avatar.', 'mc-avatars' ); ?>
+						<?php esc_html_e( 'Enter your Minecraft username to use your Minecraft head as avatar.', 'avatars-for-mc-by-mrdino' ); ?>
 					</p>
 				</td>
 			</tr>
 
 			<tr>
-				<th><label><?php esc_html_e( 'Predefined Head', 'mc-avatars' ); ?></label></th>
+				<th><label><?php esc_html_e( 'Predefined Head', 'avatars-for-mc-by-mrdino' ); ?></label></th>
 				<td>
 					<input type="hidden"
 						   name="mc_avatar_preset"
@@ -94,7 +94,7 @@ class MC_Avatars_Avatar {
 					</div>
 
 					<p class="description">
-						<?php esc_html_e( 'Click a head to use it as your avatar. Click again to deselect and fall back to your Minecraft username (or Steve).', 'mc-avatars' ); ?>
+						<?php esc_html_e( 'Click a head to use it as your avatar. Click again to deselect and fall back to your Minecraft username (or Steve).', 'avatars-for-mc-by-mrdino' ); ?>
 					</p>
 				</td>
 			</tr>

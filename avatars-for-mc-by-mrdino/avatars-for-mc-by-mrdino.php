@@ -1,13 +1,13 @@
 <?php
 /**
- * Plugin Name: MC Avatars by MrDino
+ * Plugin Name: Avatars for MC by MrDino
  * Plugin URI:  https://www.mrdino.es/mc-avatars
  * Description: Replace WordPress avatars with Minecraft-style avatars using Minecraft usernames and future custom skin features.
- * Version:     0.0.1
+ * Version:     0.0.2
  * Author:      MrDino
  * Author URI:  https://www.mrdino.es
  * Donate link: https://buymeacoffee.com/mrdino
- * Text Domain: mc-avatars
+ * Text Domain: avatars-for-mc-by-mrdino
  * License: GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
@@ -17,11 +17,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Basic plugin constants.
-define( 'MC_AVATARS_VERSION', '0.0.1' );
+define( 'MC_AVATARS_VERSION', time() );
 define( 'MC_AVATARS_PLUGIN_FILE', __FILE__ );
 define( 'MC_AVATARS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'MC_AVATARS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-define( 'MC_AVATARS_TEXT_DOMAIN', 'mc-avatars' );
+define( 'MC_AVATARS_TEXT_DOMAIN', 'avatars-for-mc-by-mrdino' );
 
 // Core class.
 require_once MC_AVATARS_PLUGIN_DIR . 'includes/class-mc-avatars.php';
@@ -79,7 +79,7 @@ function mc_avatars_lookup_user() {
 		wp_send_json_error(
 			[
 				'avatar'  => null,
-				'message' => __( 'Invalid request.', 'mc-avatars' ),
+				'message' => __( 'Invalid request.', 'avatars-for-mc-by-mrdino' ),
 			],
 			403
 		);

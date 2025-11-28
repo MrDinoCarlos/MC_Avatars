@@ -6,9 +6,13 @@
         const urlParams  = new URLSearchParams(window.location.search);
         const action     = urlParams.get('action');
 
+        const $wpLoginField = $('#user_login');   // login normal WP
+        const $wcLoginField = $('#username');     // login WooCommerce
+
         const isProfile  = $('#mc_username').length > 0;
         const isRegister = (action === 'register');
-        const isLogin    = (!isProfile && !isRegister && $('#user_login').length > 0);
+        const isLogin    = (!isProfile && !isRegister && ($wpLoginField.length > 0 || $wcLoginField.length > 0));
+
 
         // Solo actuamos en perfil, registro o login
         if (!isProfile && !isRegister && !isLogin) {
@@ -24,7 +28,10 @@
             { key: 'mhf_enderman',label: 'Enderman',                 username: 'MHF_Enderman' }
         ];
 
-        const $usernameInput = isProfile ? $('#mc_username') : $('#user_login');
+        const $usernameInput = isProfile
+            ? $('#mc_username')
+            : (isLogin ? ($wpLoginField.length ? $wpLoginField : $wcLoginField) : $('#user_login'));
+
 
         /* --------------------------------------------------
          *  PREVIEW: crear imagen de preview según contexto
@@ -56,7 +63,8 @@
             }
 
             if (isLogin) {
-                $('#user_login').after(
+                const $loginField = $wpLoginField.length ? $wpLoginField : $wcLoginField;
+                $loginField.after(
                     '<div class="mc-avatar-preview-wrapper" style="margin-top:10px; text-align:center;">' +
                         '<strong>Your Avatar</strong><br>' +
                         '<img id="mc-avatar-preview" ' +
@@ -65,6 +73,7 @@
                     '</div>'
                 );
             }
+
         }
 
         const $previewImg   = $('#mc-avatar-preview');
@@ -196,7 +205,10 @@
                  *  LOGIN: preview usando AJAX y avatar real
                  * -------------------------------------------------- */
                 if (isLogin) {
-                    $('#user_login').on('input', function () {
+
+                    const $loginField = $wpLoginField.length ? $wpLoginField : $wcLoginField;
+
+                    $loginField.on('input', function () {
                         const val = $(this).val().trim();
 
                         if (val.length < 1) {
@@ -204,28 +216,27 @@
                             return;
                         }
 
-                        const ajaxBase =
-                            (window.mcAvatarsData && mcAvatarsData.ajaxUrl)
-                                ? mcAvatarsData.ajaxUrl
-                                : (typeof ajaxurl !== 'undefined' ? ajaxurl : '');
+                        // URL y nonce desde mcAvatarsData (localize_script)
+                        const ajaxUrl = (window.mcAvatarsData && mcAvatarsData.ajaxUrl) ? mcAvatarsData.ajaxUrl : (window.ajaxurl || '');
+                        const nonce   = (window.mcAvatarsData && mcAvatarsData.nonce)   ? mcAvatarsData.nonce   : '';
 
-                        if (!ajaxBase) {
+                        if (!ajaxUrl) {
                             return;
                         }
 
-                        let url = ajaxBase +
-                            '?action=mc_avatars_lookup' +
-                            '&user=' + encodeURIComponent(val);
-
-                        if (window.mcAvatarsData && mcAvatarsData.nonce) {
-                            url += '&_mc_avatars_nonce=' + encodeURIComponent(mcAvatarsData.nonce);
-                        }
-
-                        $.get(url, function (resp) {
-                            if (resp && resp.avatar) {
-                                $previewImg.attr('src', resp.avatar);
+                        $.get(
+                            ajaxUrl,
+                            {
+                                action: 'mc_avatars_lookup',
+                                user:   val,
+                                _mc_avatars_nonce: nonce
+                            },
+                            function (resp) {
+                                if (resp && resp.avatar) {
+                                    $previewImg.attr('src', resp.avatar);
+                                }
                             }
-                        });
+                        );
                     });
                 }
 

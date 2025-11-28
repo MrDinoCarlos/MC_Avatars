@@ -34,8 +34,8 @@ class MC_Avatars_Admin {
 	 */
 	public function register_settings_page() {
 		add_options_page(
-			__( 'MC Avatars Settings', 'mc-avatars' ),
-			__( 'MC Avatars by MrDino', 'mc-avatars' ),
+			__( 'MC Avatars Settings', 'avatars-for-mc-by-mrdino' ),
+			__( 'MC Avatars by MrDino', 'avatars-for-mc-by-mrdino' ),
 			'manage_options',
 			'mc-avatars-settings',
 			[ $this, 'render_settings_page' ]
@@ -58,14 +58,14 @@ class MC_Avatars_Admin {
 
 		add_settings_section(
 			'mc_avatars_main_section',
-			__( 'General Settings', 'mc-avatars' ),
+			__( 'General Settings', 'avatars-for-mc-by-mrdino' ),
 			'__return_false',
 			'mc-avatars-settings'
 		);
 
 		add_settings_field(
 			'mc_avatars_skin_source',
-			__( 'Skin Source', 'mc-avatars' ),
+			__( 'Skin Source', 'avatars-for-mc-by-mrdino' ),
 			[ $this, 'field_skin_source' ],
 			'mc-avatars-settings',
 			'mc_avatars_main_section'
@@ -80,14 +80,14 @@ class MC_Avatars_Admin {
 		?>
 		<select name="mc_avatars_skin_source" id="mc_avatars_skin_source">
 			<option value="mc-heads" <?php selected( $value, 'mc-heads' ); ?>>
-				<?php esc_html_e( 'MC Heads (mc-heads.net)', 'mc-avatars' ); ?>
+				<?php esc_html_e( 'MC Heads (mc-heads.net)', 'avatars-for-mc-by-mrdino' ); ?>
 			</option>
 			<option value="crafatar" <?php selected( $value, 'crafatar' ); ?>>
-				<?php esc_html_e( 'Crafatar (if available)', 'mc-avatars' ); ?>
+				<?php esc_html_e( 'Crafatar (if available)', 'avatars-for-mc-by-mrdino' ); ?>
 			</option>
 		</select>
 		<p class="description">
-			<?php esc_html_e( 'Choose the main service used to load Minecraft heads.', 'mc-avatars' ); ?>
+			<?php esc_html_e( 'Choose the main service used to load Minecraft heads.', 'avatars-for-mc-by-mrdino' ); ?>
 		</p>
 		<?php
 	}
@@ -98,10 +98,10 @@ class MC_Avatars_Admin {
 	public function render_settings_page() {
 		?>
 		<div class="wrap mc-avatars-wrap">
-			<h1><?php esc_html_e( 'MC Avatars Settings', 'mc-avatars' ); ?></h1>
+			<h1><?php esc_html_e( 'MC Avatars Settings', 'avatars-for-mc-by-mrdino' ); ?></h1>
 
 			<p class="mc-avatars-subtitle">
-				<?php esc_html_e( 'Configure how Minecraft avatars are loaded and displayed.', 'mc-avatars' ); ?>
+				<?php esc_html_e( 'Configure how Minecraft avatars are loaded and displayed.', 'avatars-for-mc-by-mrdino' ); ?>
 			</p>
 
 			<form method="post" action="options.php">
@@ -118,12 +118,12 @@ class MC_Avatars_Admin {
 				<?php
 				esc_html_e(
 					'MC Avatars by MrDino — If you like this plugin, you can support it here:',
-					'mc-avatars'
+					'avatars-for-mc-by-mrdino'
 				);
 				?>
 				&nbsp;
 				<a href="https://buymeacoffee.com/mrdino" target="_blank" rel="noopener noreferrer">
-					<?php esc_html_e( 'BuyMeACoffee', 'mc-avatars' ); ?>
+					<?php esc_html_e( 'BuyMeACoffee', 'avatars-for-mc-by-mrdino' ); ?>
 				</a>
 			</p>
 
