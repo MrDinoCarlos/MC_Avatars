@@ -3,7 +3,7 @@
  * Plugin Name: Avatars for MC by MrDino
  * Plugin URI:  https://www.mrdino.es/mc-avatars
  * Description: Replace WordPress avatars with Minecraft-style avatars using Minecraft usernames and future custom skin features.
- * Version:     0.0.2
+ * Version:     0.0.3
  * Author:      MrDino
  * Author URI:  https://www.mrdino.es
  * Donate link: https://buymeacoffee.com/mrdino
